@@ -1,3 +1,3 @@
-# Modelado de un videojuego - parte 2
+# Modelado de un videojuego - parte 3
 Diagrama de clases reducido e implementación <b>parcial</b> para una versión inspirada en <b>Road Fighter</b>. <br>
-Enfatiza el modelado en clases persiguiendo una <b>división en 3 capas</b>: lógica - vista - datos. <br>
+Incorpora al modelado con <b>división en 3 capas</b> las interacciones para <b>direccionar el auto del jugador</b> y que el mismo pueda <b>desplazarse</b> considerando su dirección. Para esto último, opera el uso de un Thread que <b>automatiza el movimiento del jugador</b> (para lanzar movimiento, presione _barra espaciadora (harcoding de esta versión)_)<br>
