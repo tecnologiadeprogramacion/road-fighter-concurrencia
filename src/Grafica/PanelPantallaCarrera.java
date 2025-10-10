@@ -31,6 +31,7 @@ public class PanelPantallaCarrera extends PanelVista {
 		super(controlador_vistas);
 		setPreferredSize(new Dimension(ConstantesVistas.PANEL_ANCHO, ConstantesVistas.PANEL_ALTO));
 		setLayout(new BorderLayout());
+		setDoubleBuffered(true);
 		agregar_panel_informacion();
 		agregar_panel_carrera_con_fondo_y_scroll();
 	}

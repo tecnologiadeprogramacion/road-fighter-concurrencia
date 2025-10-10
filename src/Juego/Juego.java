@@ -6,6 +6,7 @@ import Fabricas.FabricaEntidades;
 import Fabricas.SpritesOriginales;
 import Grafica.ControladorGrafica;
 import Grafica.Observer;
+import Hilos.HiloJugador;
 import Parser.GeneradorRuta;
 import Vehiculos.Jugador;
 
@@ -15,6 +16,7 @@ public class Juego implements ControladorJuego{
 	protected GeneradorRuta generador_ruta;
 	protected FabricaEntidades fabrica_entidades;
 	protected Ruta ruta_actual;
+	protected HiloJugador hilo_jugador;
 	
 	public Juego(ControladorGrafica controlador_grafica) {
 		this.controlador_grafica = controlador_grafica;
@@ -34,6 +36,7 @@ public class Juego implements ControladorJuego{
 		ruta_actual = generador_ruta.generar_ruta(1, fabrica_entidades);
 		registrar_observers();
 		controlador_grafica.mostrar_pantalla_carrera();
+		hilo_jugador= new HiloJugador(this);
 	}
 
 	public void cambiar_modo_juego(int modo){
@@ -45,8 +48,9 @@ public class Juego implements ControladorJuego{
 	}
 
     public void lanzar_misil(){
-		// Harcoding: en lugar de lanzar misil, se utiliza el evento para movilizar el auto manualmente
-		mover_jugador();
+		// Harcoding: en lugar de lanzar misil, se utiliza el evento para movilizar el auto
+		// automáticamente mediante un thread
+		hilo_jugador.start();
 	}
 
 	public void mover_jugador(){
