@@ -45,7 +45,14 @@ public class Juego implements ControladorJuego{
 	}
 
     public void lanzar_misil(){
-		// To DO
+		// Harcoding: en lugar de lanzar misil, se utiliza el evento para movilizar el auto manualmente
+		mover_jugador();
+	}
+
+	public void mover_jugador(){
+		ruta_actual.get_vehiculo_jugador().mover();
+		// To DO: controlar colisiones
+		// TO DO: resolver colisiones
 	}
 	
 	protected void registrar_observers() {

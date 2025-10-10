@@ -60,6 +60,11 @@ public class Jugador extends Carrera implements EntidadJugador, Colisionador {
 		return puntaje;
 	}
 
+	public void mover(){
+		estado_direccion.mover();
+		notificar_observers();
+	}
+
 	public void chocar(Colisionable colisionable) {
 		colisionable.afectar(this);
 	}
