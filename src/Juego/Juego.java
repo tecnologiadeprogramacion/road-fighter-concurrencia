@@ -39,6 +39,14 @@ public class Juego implements ControladorJuego{
 	public void cambiar_modo_juego(int modo){
 		// To DO
 	}
+
+    public void cambiar_direccion_jugador(int direccion){
+		// To DO
+	}
+
+    public void lanzar_misil(){
+		// To DO
+	}
 	
 	protected void registrar_observers() {
 		registrar_observer_jugador(ruta_actual.get_vehiculo_jugador());

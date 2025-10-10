@@ -2,6 +2,9 @@ package Grafica;
 
 import javax.swing.JFrame;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import Juego.ControladorJuego;
 import Juego.EntidadJugador;
 import Juego.EntidadLogica;
@@ -29,10 +32,23 @@ public class GUI implements ControladorVistas, ControladorGrafica{
 		ventana.setSize(ConstantesVistas.VENTANA_ANCHO, ConstantesVistas.VENTANA_ALTO);
 		ventana.setLocationRelativeTo(null);
 		ventana.setVisible(true);
+		ventana.setFocusable(true);
 	}
 	
 	protected void registrar_oyente_ventana() {
-		// To DO
+		ventana.addKeyListener(new KeyAdapter(){
+			public void keyPressed(KeyEvent e){
+				if (e.getKeyCode() == KeyEvent.VK_A){
+					controlador_juego.cambiar_direccion_jugador(ConstantesTeclado.IZQUIERDA);
+				}
+				if (e.getKeyCode() == KeyEvent.VK_D){
+					controlador_juego.cambiar_direccion_jugador(ConstantesTeclado.DERECHA);
+				}
+				if (e.getKeyCode() == KeyEvent.VK_SPACE){
+					controlador_juego.lanzar_misil();
+				}
+			}
+		});
 	}
 		
 	// De interfaz ControladorVistas
