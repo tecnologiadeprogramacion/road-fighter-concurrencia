@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.Point;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,7 +15,6 @@ import javax.swing.JScrollPane;
 
 import Juego.EntidadJugador;
 import Juego.EntidadLogica;
-
 public class PanelPantallaCarrera extends PanelVista {
 
 	private static final long serialVersionUID = -1366756178696496543L;
@@ -99,7 +99,10 @@ public class PanelPantallaCarrera extends PanelVista {
 	// Operacion para observer de jugador
 	
 	protected void actualizar_scroll_hacia_jugador(EntidadJugador jugador) {
-		// To DO
+		int pos_y_jugador = AdaptadorPosicionPixel.transformar_y(jugador.get_pos_y());
+		int margen_debajo_jugador = ConstantesVistas.MARGEN_DEBAJO_JUGADOR;
+		int viewport_nuevo_y =  (pos_y_jugador + margen_debajo_jugador) - ConstantesVistas.PANEL_ALTO;
+		panel_scroll_carrera.getViewport().setViewPosition(new Point(0,viewport_nuevo_y));		
 	}
 	
 	// Operaciones propias para construccion de PanelPantallaCarrera
@@ -115,7 +118,8 @@ public class PanelPantallaCarrera extends PanelVista {
 		
 		panel_scroll_carrera = new JScrollPane(panel_carreras);
 		panel_scroll_carrera.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		panel_scroll_carrera.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		panel_scroll_carrera.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		panel_scroll_carrera.setWheelScrollingEnabled(false);
 		panel_scroll_carrera.setBounds(0, 0, ConstantesVistas.PANEL_CARRERA_ANCHO, ConstantesVistas.PANEL_ALTO);
 			
 		add(panel_scroll_carrera, BorderLayout.CENTER);

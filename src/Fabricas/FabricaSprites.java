@@ -30,7 +30,7 @@ public abstract class FabricaSprites {
 	}
 	
 	public Sprites get_vehiculo_jugador() {
-		return new Sprites( get_mapeo_estado_imagen_harcoding ("auto.png"), 0);
+		return new Sprites( get_mapeo_estado_imagen_harcoding ("jugador.png"), 0);
 	}
 	
 	public Sprites get_vehiculo_carrera() {
