@@ -30,7 +30,13 @@ public abstract class FabricaSprites {
 	}
 	
 	public Sprites get_vehiculo_jugador() {
-		return new Sprites( get_mapeo_estado_imagen_harcoding ("jugador.png"), 0);
+		Map<Integer,String> mapeo_estado_imagen = new HashMap<Integer,String>();
+		mapeo_estado_imagen.put(30, ruta_a_carpeta + "/jugador-30.png");
+		mapeo_estado_imagen.put(60, ruta_a_carpeta + "/jugador-60.png");
+		mapeo_estado_imagen.put(90, ruta_a_carpeta + "/jugador-90.png");
+		mapeo_estado_imagen.put(120, ruta_a_carpeta + "/jugador-120.png");
+		mapeo_estado_imagen.put(150, ruta_a_carpeta + "/jugador-150.png");
+		return new Sprites(mapeo_estado_imagen, 90);
 	}
 	
 	public Sprites get_vehiculo_carrera() {

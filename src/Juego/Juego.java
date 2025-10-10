@@ -41,7 +41,7 @@ public class Juego implements ControladorJuego{
 	}
 
     public void cambiar_direccion_jugador(int direccion){
-		// To DO
+		ruta_actual.get_vehiculo_jugador().set_direccion(direccion);
 	}
 
     public void lanzar_misil(){

@@ -3,6 +3,7 @@ package Vehiculos;
 import java.util.LinkedList;
 import java.util.List;
 
+import EstadoDireccion.EstadoDireccion;
 import Fabricas.Sprites;
 import Juego.EntidadJugador;
 import Obstaculos.Obstaculo;
@@ -13,6 +14,7 @@ import Visitor.Colisionador;
 
 public class Jugador extends Carrera implements EntidadJugador, Colisionador {
 
+	protected EstadoDireccion estado_direccion;
 	protected List<Misil> mis_misiles;
 	protected int combustible;
 	protected int puntaje;
@@ -20,11 +22,18 @@ public class Jugador extends Carrera implements EntidadJugador, Colisionador {
 	
 	public Jugador(Sprites sprites, int x, int y, float peso, String patente) {
 		super(sprites, x, y, peso, patente);
+		estado_direccion = new EstadoDireccion(this);
 		velocidad = 90;
 		mis_misiles = new LinkedList<Misil>();
 		combustible = 100;
 		puntaje = 0;
 		vidas = 3;
+	}
+
+	public void set_direccion(int direccion){
+		estado_direccion.cambiar_direccion(direccion);
+		this.mis_sprites.set_estado_actual(get_clave_representando_estado());
+		notificar_observers();
 	}
 
 	public void set_velocidad(int velocidad){
@@ -81,5 +90,12 @@ public class Jugador extends Carrera implements EntidadJugador, Colisionador {
 
 	public void pierde_partida(){
 		// To DO
+	}
+
+	protected int get_clave_representando_estado(){
+		// To DO: Este metodo solo considera como estado la direccion a la que apunta el auto
+		// La clave debera considerar cuestiones extras, como por ejmplo, si contiene misiles,
+		// lo que posiblemente redundara en otros sprites representando al jugador.
+		return estado_direccion.get_direccion_en_grados();
 	}
 }

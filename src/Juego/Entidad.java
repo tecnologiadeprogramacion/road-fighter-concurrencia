@@ -47,4 +47,10 @@ public abstract class Entidad implements EntidadLogica {
 	public void remover_observer(Observer observer) {
 		this.mis_observers.remove(observer);
 	}
+
+	public void notificar_observers(){
+		for(Observer o: mis_observers){
+			o.actualizar();
+		}
+	}
 }
